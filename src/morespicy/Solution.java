@@ -1,38 +1,32 @@
 package morespicy;
 
-import java.util.Collections;
-import java.util.LinkedList;
+import java.util.*;
 
-/**
- * 효율성 테스트 불합격 코드
- */
-class SolutionX {
+class Solution {
     public static int solution(int[] scoville, int K) {
         int answer = 0;
 
-        LinkedList<Integer> collect = new LinkedList<>();
+        Arrays.sort(scoville);
+        PriorityQueue<Integer> priorityQueueLowest = new PriorityQueue<>();
         for (int i : scoville) {
-            collect.add(i);
+            priorityQueueLowest.add(i);
         }
 
-        while (true) {
-            Collections.sort(collect);
-            if (collect.getFirst() >= K) {
+        while (priorityQueueLowest.size()>1) {
+            if (priorityQueueLowest.element() >= K) {
                 break;
             }
 
             answer++;
 
-            int a = collect.getFirst();
-            collect.removeFirst();
-            int b = collect.getFirst();
-            collect.removeFirst();
+            int a = priorityQueueLowest.poll();
+            int b = priorityQueueLowest.poll() * 2;
+            int i = a + b;
 
-            if (collect.size() == 0 && a + b < K) {
+            if (priorityQueueLowest.size() == 0 && i < K) {
                 return -1;
-            } else {
-                collect.add(a + 2*b);
             }
+            priorityQueueLowest.add(i);
         }
 
         return answer;
