@@ -1,7 +1,6 @@
 package findpair;
 
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class Solution {
     public int solution(String s) {
