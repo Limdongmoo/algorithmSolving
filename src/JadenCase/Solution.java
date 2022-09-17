@@ -1,7 +1,5 @@
 package JadenCase;
 
-import java.util.stream.IntStream;
-
 class Solution {
     public static String solution(String s) {
         StringBuilder sb = new StringBuilder();
