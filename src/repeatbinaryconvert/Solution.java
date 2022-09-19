@@ -7,13 +7,9 @@ class Solution {
         int length;
 
         while (s.length() > 1) {
-            char[] chars = s.toCharArray();
-            for (char c : chars) {
-                if (c == '0') {
-                    numOfZero++;
-                }
-            }
+            numOfZero += s.length();
             s = s.replaceAll("0", "");
+            numOfZero -= s.length();
             seq++;
             length = s.length();
             int degree=0;
